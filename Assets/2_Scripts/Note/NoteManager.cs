@@ -5,6 +5,7 @@ using UnityEngine;
 public class NoteManager : MonoBehaviour
 {
     public static NoteManager Instance;
+    [SerializeField] NoteGroup[] noteGroupClassArr;
     void Awake()
     {
         Instance = this;
@@ -13,6 +14,9 @@ public class NoteManager : MonoBehaviour
     // Update is called once per frame
     public void OnInput(KeyCode _keycode)
     {
-        Debug.Log(_keycode + "¥≠∑»¿Ω");
+        if (_keycode == KeyCode.A)
+            noteGroupClassArr[0].OnInput(true);
+        else if (_keycode == KeyCode.S)
+            noteGroupClassArr[1].OnInput(false);
     }
 }
