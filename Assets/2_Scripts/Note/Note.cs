@@ -4,15 +4,17 @@ using UnityEngine;
 
 public class Note : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    [SerializeField] private SpriteRenderer srdr;
+    [SerializeField] private Sprite appleSprite;
+    [SerializeField] private Sprite blueberrySprite;
+
+    public void Activate(bool _isApple)
     {
-        
+        this.srdr.sprite = _isApple == true? appleSprite : blueberrySprite;     
+    }
+    public void Deactivate()    
+    {
+        GameObject.Destroy(this.gameObject);
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 }

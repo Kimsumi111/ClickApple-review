@@ -14,9 +14,14 @@ public class NoteManager : MonoBehaviour
     // Update is called once per frame
     public void OnInput(KeyCode _keycode)
     {
-        if (_keycode == KeyCode.A)
-            noteGroupClassArr[0].OnInput(true);
-        else if (_keycode == KeyCode.S)
-            noteGroupClassArr[1].OnInput(false);
+        int _randID = Random.Range(0, noteGroupClassArr.Length);
+        NoteGroup _randNoteGroupArr = this.noteGroupClassArr[_randID];
+
+        foreach (NoteGroup _noteGroupClass in this.noteGroupClassArr)
+        {
+            _noteGroupClass.OnSpawnNote(_noteGroupClass == _randNoteGroupArr);
+            bool _isSelected = _noteGroupClass.GetKeyCode == _keycode;
+            _noteGroupClass.OnInput(_isSelected);   // 버튼 애니메이션 생성 및 맨 밑 노트 삭제
+        }
     }
 }
