@@ -40,7 +40,7 @@ public class NoteGroup : MonoBehaviour
     public void OnInput(bool _isSelected)
     {
         Note _noteClass = noteClassList[0];
-        _noteClass.Deactivate();
+        _noteClass.OnInput(_isSelected);
 
         this.noteClassList.RemoveAt(0);
 
