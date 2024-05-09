@@ -15,6 +15,8 @@ public class GameManager : MonoBehaviour
     private void Start()
     {
         UIManager.Instance.OnScore(this.score, this.maxScore);
+
+        NoteManager.Instance.Activate();
     }
 
     public void OnScore(bool _isCorrect)

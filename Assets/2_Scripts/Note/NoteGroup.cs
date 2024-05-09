@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class NoteGroup : MonoBehaviour
@@ -12,18 +13,23 @@ public class NoteGroup : MonoBehaviour
     [SerializeField] Sprite normalBtnSprite = null;
     [SerializeField] Sprite selectedBtnSprite = null;
     [SerializeField] Animation anim = null;
-    [SerializeField] private KeyCode keyCode;
+    [SerializeField] TextMeshPro keyCodeTmp = null;
+    private KeyCode keyCode;
 
     List<Note> noteClassList = new List<Note>();
 
     public KeyCode GetKeyCode => this.keyCode;
 
-    void Start()
+    public void Activate(KeyCode _keyCode)   // 키 코드 받음
     {
+        this.keyCode = _keyCode;
+        this.keyCodeTmp.text = _keyCode.ToString();  // textmeshpro 안에 text 있음
+
         for (int i = 0; i < this.maxNoteNum; i++)
         {
             OnSpawnNote(true);
         }
+        InputManager.Instance.AddKeyCode(_keyCode);
     }
 
     public void OnSpawnNote(bool _isApple)
