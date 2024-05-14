@@ -9,7 +9,7 @@ public class NoteManager : MonoBehaviour
 
     [SerializeField] private NoteGroup baseNoteGroupClass;
     [SerializeField] private float noteGroupWidthInterval = 0.5f;
-    [SerializeField]
+
     private KeyCode[] wholeKeyCodeArr = new KeyCode[]
     {
         KeyCode.A,
@@ -40,6 +40,7 @@ public class NoteManager : MonoBehaviour
         }
 
     }
+    
     public void OnSpawnNoteGroup()
     {
         int activateNoteGroupNum = this.noteGroupClassList.Count;
