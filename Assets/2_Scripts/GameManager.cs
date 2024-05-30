@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Net.Sockets;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -16,6 +17,8 @@ public class GameManager : MonoBehaviour
     [SerializeField] private GameObject gameOverObj;
 
     private int noteGroupUnlockCnt = 0;
+
+    public bool isGameDone => this.gameClearObj.activeSelf == true || this.gameOverObj.activeSelf == true;
 
     void Awake()
     {
@@ -45,6 +48,10 @@ public class GameManager : MonoBehaviour
 
         // GameOver
         this.gameOverObj.SetActive(true);
+        if (isGameDone == true)
+        {
+            yield break;
+        }
     }
     public void OnScore(bool _isCorrect)
     {
@@ -71,6 +78,6 @@ public class GameManager : MonoBehaviour
     }
     public void CallBtn_Restart()
     {
-
+        UnityEngine.SceneManagement.SceneManager.LoadScene(0);
     }
 }
